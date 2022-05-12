@@ -70,7 +70,7 @@ namespace PatientMasterApp.Controllers
         [HttpPut("{id}")]
         public async Task<IActionResult> PutvaccineInfo(int id, Vaccinestatus vaccinestatus)
         {
-            if (id != vaccinestatus.PatientId)
+            if (id != vaccinestatus.VaccineStatusId)
             {
                 return BadRequest();
             }
@@ -97,8 +97,9 @@ namespace PatientMasterApp.Controllers
         }
         private bool VaccineExists(int id)
         {
-            return _context.DbPatientInfo.Any(e => e.PatientId == id);
+            return _context.DbVaccinestatus.Any(e => e.VaccineStatusId == id);
         }
+       
 
         //[HttpPut("{id}")]
         //public async Task<IActionResult> Putvaccinestatus(int id, Vaccinestatus putvaccine)
@@ -128,10 +129,10 @@ namespace PatientMasterApp.Controllers
 
         //    return NoContent();
         //}
-        private bool vaccineExists(int id)
-        {
-            return _context.DbVaccinestatus.Any(e => e.VaccineStatusId == id);
-        }
+        //private bool vaccineExists(int id)
+        //{
+        //    return _context.DbVaccinestatus.Any(e => e.VaccineStatusId == id);
+        //}
 
         [HttpDelete("{id}")]
        
